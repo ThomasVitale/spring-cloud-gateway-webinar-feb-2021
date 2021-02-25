@@ -1,15 +1,6 @@
 server:
   port: 9000
 
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: book-route
-          uri: ${BOOK_SERVICE_URL:http://localhost:9001}/books
-          predicates:
-            - Path=/books/**
-
 management:
   endpoints:
     web:
