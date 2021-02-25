@@ -2,22 +2,9 @@ server:
   port: 9000
 
 spring:
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: oauth2-login
-            client-secret: 4d8a570b-defa-4e6a-a5d2-0d46387ff776
-            client-name: Keycloak
-            scope: openid,profile,email,roles,role
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:8180/auth/realms/public-library
   cloud:
     gateway:
       default-filters:
-        - SaveSession
         - name: RequestRateLimiter
           args:
             redis-rate-limiter.replenishRate: 10
@@ -44,19 +31,11 @@ spring:
               args:
                 name: bookCircuitBreaker
                 fallbackUri: forward:/book-fallback
-            - name: TokenRelay
-  lifecycle:
-    timeout-per-shutdown-phase: 20s
   redis:
     connect-timeout: 30s
     host: localhost
     port: 6379
     timeout: 500ms
-  session:
-    store-type: redis
-    timeout: 10m
-    redis:
-      namespace: library:edge
 
 management:
   endpoints:

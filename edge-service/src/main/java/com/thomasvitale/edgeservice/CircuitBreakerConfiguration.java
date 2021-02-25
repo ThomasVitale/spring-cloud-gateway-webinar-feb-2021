@@ -23,7 +23,7 @@ public class CircuitBreakerConfiguration {
 						.slidingWindowSize(20)
 						.permittedNumberOfCallsInHalfOpenState(5)
 						.failureRateThreshold(50)
-						.waitDurationInOpenState(Duration.ofSeconds(60))
+						.waitDurationInOpenState(Duration.ofSeconds(30))
 						.build())
 				.timeLimiterConfig(TimeLimiterConfig.custom()
 						.timeoutDuration(TIMEOUT)
