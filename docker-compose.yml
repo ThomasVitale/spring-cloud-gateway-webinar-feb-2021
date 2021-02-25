@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  redis:
+    image: redis:6.2.0
+    container_name: redis
+    ports:
+      - 6379:6379
+  prometheus:
+    image: prom/prometheus:v2.25.0
+    container_name: prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: password
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      - prometheus
+
+volumes:
+  grafana-data:
