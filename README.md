@@ -1,1 +1,3 @@
-# spring-cloud-gateway-session-feb-2021
+# Spring Cloud Gateway - Live Session
+
+Spring User Group Italia - 25/02/2021
