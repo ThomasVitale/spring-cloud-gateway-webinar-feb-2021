@@ -3,14 +3,14 @@ global:
 
 scrape_configs:
   - job_name: 'edge-service'
-    scrape_interval: 5s
+    scrape_interval: 3s
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['host.docker.internal:9000']
         labels:
           application: 'edge-service'
   - job_name: 'book-service'
-    scrape_interval: 5s
+    scrape_interval: 3s
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['host.docker.internal:9001']

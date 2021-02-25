@@ -26,11 +26,6 @@ spring:
           uri: ${BOOK_SERVICE_URL:http://localhost:9001}/books
           predicates:
             - Path=/books/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: bookCircuitBreaker
-                fallbackUri: forward:/book-fallback
   redis:
     connect-timeout: 30s
     host: localhost
