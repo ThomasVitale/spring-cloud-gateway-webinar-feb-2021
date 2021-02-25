@@ -4,18 +4,6 @@ server:
 spring:
   cloud:
     gateway:
-      default-filters:
-        - name: Retry
-          args:
-            retries: 3
-            methods: GET
-            series: SERVER_ERROR
-            exceptions: java.io.IOException, java.util.concurrent.TimeoutException
-            backoff:
-              firstBackoff: 50ms
-              maxBackOff: 500ms
-              factor: 2
-              basedOnPreviousValue: false
       routes:
         - id: book-route
           uri: ${BOOK_SERVICE_URL:http://localhost:9001}/books
